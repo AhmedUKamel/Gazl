@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: Gazl
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: ${application.datasource.url}
+    username: ${application.datasource.username}
+    password: ${application.datasource.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2MB
+  mail:
+    host: ${application.mail.host}
+    port: ${application.mail.port}
+    username: ${application.mail.username}
+    password: ${application.mail.password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+      transport:
+        protocol: smtp
+  profiles:
+    active: dev

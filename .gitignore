@@ -1,0 +1,13 @@
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### Local Properties / Configurations ###
+src/main/resources/application-dev.yml
+.env
+versions.txt
+
+### Build Directory ###
+target/
