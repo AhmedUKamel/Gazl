@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>صفحة الخطأ</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title {
+            font-size: 50px;
+            color: red;
+        }
+
+        .message {
+            font-size: 24px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="https://ahmed.socialcasesbisha.com/api/v1/public/resources-images?image=logo-2.png" alt="logo 2"
+         style="
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 10vw;"/>
+    <img src="https://ahmed.socialcasesbisha.com/api/v1/public/resources-images?image=logo-1.png" alt="logo 1"
+         style="
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 10vw;"/>
+    <h1 class="title">خطأ</h1>
+    <p class="message" th:text="${message}"></p>
+</div>
+</body>
+</html>

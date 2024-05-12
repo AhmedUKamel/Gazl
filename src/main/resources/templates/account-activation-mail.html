@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Droid Arabic Kufi', serif, 'Amiri', Helvetica, sans-serif;
+            background-color: #e9ecef;
+            letter-spacing: 1px;
+            color: #333;
+        }
+
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .logo {
+            text-align: center;
+            margin: 50px 0 30px;
+        }
+
+        .heading {
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: black;
+        }
+
+        div {
+            margin-top: 30px;
+        }
+
+        .button {
+            cursor: pointer;
+            display: inline-block;
+            padding: 16px 36px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 6px;
+            color: white !important;
+            background-color: #1a82e2;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body dir="rtl">
+<div class="container">
+    <div class="logo">
+        <img
+                src="https://ahmed.socialcasesbisha.com/api/v1/public/resources-images?image=logo-1.png"
+                alt="logo 1"
+                width="150"
+        />
+        <img
+                src="https://ahmed.socialcasesbisha.com/api/v1/public/resources-images?image=logo-2.png"
+                alt="logo 2"
+                width="150"
+                style="margin-right: 100px"
+        />
+    </div>
+    <h1 class="heading center">فعل حسابك ببريدك الألكتروني</h1>
+    <div>
+        مرحبا، <span th:text="${name}"></span><br/><br/>
+        شكرا للتسجيل في جزل! نحن متحمسون لانضمامك إلى مجتمعنا. لإكمال تسجيلك وفتح جميع ميزات جزل، ما عليك سوى النقر
+        فوق الزر أدناه للتحقق من عنوان بريدك الإلكتروني:
+    </div>
+    <div class="center">
+        <a target="_blank" class="button" th:href="${link}">فعل الان</a>
+    </div>
+    <div dir="rtl">
+        يرجى ملاحظة أن هذا الرابط سوف تنتهي صلاحيته في لذا تأكد من تفعيل حسابك قبل
+        <br/><span th:text="${expiration}"></span><br/>
+        ذلك الوقت. إذا لم تقم بالتحقق من بريدك الإلكتروني خلال 24 ساعة، فستحتاج إلى طلب رابط تنشيط جديد.
+    </div>
+    <div>
+        نحن نتطلع إلى الترحيب بكم في جزل! <br/><br/>بإخلاص،
+        <br/><br/>فريق جزل
+    </div>
+</div>
+</body>
+</html>
