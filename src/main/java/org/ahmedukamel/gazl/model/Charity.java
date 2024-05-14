@@ -1,8 +1,7 @@
 package org.ahmedukamel.gazl.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.ahmedukamel.gazl.model.embeddable.Location;
 import org.ahmedukamel.gazl.model.embeddable.PhoneNumber;
 
@@ -11,6 +10,9 @@ import java.util.Set;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "charities", uniqueConstraints = {
         @UniqueConstraint(name = "CHARITY_NAME_UNIQUE_CONSTRAINT", columnNames = "name"),
