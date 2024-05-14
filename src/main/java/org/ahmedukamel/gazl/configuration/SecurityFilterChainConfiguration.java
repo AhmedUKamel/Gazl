@@ -2,6 +2,7 @@ package org.ahmedukamel.gazl.configuration;
 
 import lombok.RequiredArgsConstructor;
 import org.ahmedukamel.gazl.customizer.AuthorizeHttpRequestsCustomizer;
+import org.ahmedukamel.gazl.customizer.CorsCustomizer;
 import org.ahmedukamel.gazl.customizer.ExceptionHandlingCustomizer;
 import org.ahmedukamel.gazl.customizer.SessionManagementCustomizer;
 import org.ahmedukamel.gazl.filter.JwtAuthenticationFilter;
@@ -32,7 +33,8 @@ public class SecurityFilterChainConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+//                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .cors(new CorsCustomizer())
                 .authorizeHttpRequests(new AuthorizeHttpRequestsCustomizer())
                 .sessionManagement(new SessionManagementCustomizer())
                 .exceptionHandling(new ExceptionHandlingCustomizer())
@@ -43,10 +45,9 @@ public class SecurityFilterChainConfiguration {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedOrigins(Collections.singletonList("*"));
-        corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
         corsConfiguration.setAllowedMethods(Collections.singletonList("*"));
+        corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
         corsConfiguration.setExposedHeaders(Collections.singletonList("*"));
-        corsConfiguration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource corsConfigurationSource =
                 new UrlBasedCorsConfigurationSource();
