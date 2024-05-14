@@ -12,4 +12,6 @@ public interface IGovernmentService {
     Object getGovernment(Integer id);
 
     Object getGovernments(long pageSize, long pageNumber);
+
+    Object updateLogo(Integer id, MultipartFile image);
 }

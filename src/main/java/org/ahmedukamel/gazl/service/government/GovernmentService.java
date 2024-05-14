@@ -113,4 +113,22 @@ public class GovernmentService implements IGovernmentService {
 
         return new ApiResponse(true, message, response);
     }
+
+    @SneakyThrows
+    @Override
+    public Object updateLogo(Integer id, MultipartFile image) {
+        Government government = databaseService.get(repository::findById, id, Government.class);
+
+        imageService.deleteImage(PathConstants.GOVERNMENT_LOGO_PATH.resolve(government.getLogo()));
+
+        String logo = imageService.saveImage(image, PathConstants.GOVERNMENT_LOGO_PATH);
+        government.setLogo(logo);
+        Government updatedGovernment = repository.save(government);
+
+        GovernmentResponse response = mapper.apply(updatedGovernment);
+        String message = messageSource.getMessage("org.ahmedukamel.gazl.service.government.GovernmentService.updateLogo",
+                null, LocaleConstants.ARABIC);
+
+        return new ApiResponse(true, message, response);
+    }
 }

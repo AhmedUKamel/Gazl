@@ -37,6 +37,13 @@ public class GovernmentController {
     }
 
     @AdminAuthorization
+    @PostMapping(value = "{governmentId}/logo")
+    public ResponseEntity<?> updateLogo(@Min(value = 1) @PathVariable(value = "governmentId") Integer id,
+                                        @NotEmpty @RequestParam(value = "logo") MultipartFile image) {
+        return ResponseEntity.accepted().body(service.updateLogo(id, image));
+    }
+
+    @AdminAuthorization
     @DeleteMapping(value = "{governmentId}")
     public ResponseEntity<?> deleteGovernment(@Min(value = 1) @PathVariable(value = "governmentId") Integer id) {
         return ResponseEntity.accepted().body(service.deleteGovernment(id));
