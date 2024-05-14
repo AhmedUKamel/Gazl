@@ -11,7 +11,8 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "governments", uniqueConstraints = {
-        @UniqueConstraint(name = "GOVERNMENT_NAME_UNIQUE_CONSTRAINT", columnNames = "name")
+        @UniqueConstraint(name = "GOVERNMENT_NAME_UNIQUE_CONSTRAINT", columnNames = "name"),
+        @UniqueConstraint(name = "GOVERNMENT_LOGO_UNIQUE_CONSTRAINT", columnNames = "logo")
 })
 public class Government {
     @Id
