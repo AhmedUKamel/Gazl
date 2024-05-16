@@ -1,14 +1,16 @@
 package org.ahmedukamel.gazl.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.ahmedukamel.gazl.model.embeddable.Location;
 import org.ahmedukamel.gazl.model.embeddable.PhoneNumber;
 import org.ahmedukamel.gazl.model.enumration.OpportunityType;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "opportunities")
 public class Opportunity {
