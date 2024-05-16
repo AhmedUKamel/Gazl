@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Min;
 import org.ahmedukamel.gazl.dto.opportunity.OpportunityRequest;
 import org.ahmedukamel.gazl.service.opportunity.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -18,18 +19,21 @@ public class OpportunityController {
         this.service = service;
     }
 
+    @PreAuthorize(value = "hasAnyAuthority('BUSINESS', 'CHARITY', 'GOVERNMENT', 'ADMIN')")
     @PostMapping
     public ResponseEntity<?> createOpportunity(@Valid @RequestBody OpportunityRequest request) {
         return ResponseEntity.created(URI.create("/api/v1/opportunity"))
                 .body(service.createOpportunity(request));
     }
 
+    @PreAuthorize(value = "hasAnyAuthority('BUSINESS', 'CHARITY', 'GOVERNMENT', 'ADMIN')")
     @PutMapping(value = "{opportunityId}")
     public ResponseEntity<?> updateOpportunity(@Min(value = 1) @PathVariable(value = "opportunityId") Long id,
                                                @Valid @RequestBody OpportunityRequest request) {
         return ResponseEntity.accepted().body(service.updateOpportunity(id, request));
     }
 
+    @PreAuthorize(value = "hasAnyAuthority('BUSINESS', 'CHARITY', 'GOVERNMENT', 'ADMIN')")
     @DeleteMapping(value = "{opportunityId}")
     public ResponseEntity<?> deleteOpportunity(@Min(value = 1) @PathVariable(value = "opportunityId") Long id) {
         return ResponseEntity.accepted().body(service.deleteOpportunity(id));
